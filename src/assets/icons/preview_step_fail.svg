@@ -1,0 +1,20 @@
+<svg
+  width="30"
+  height="30"
+  viewBox="0 0 30 30"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M23.7072 7.70712L7.70718 23.7071L6.29297 22.2929L22.2929 6.29291L23.7072 7.70712Z"
+    fill="currentColor"
+  />
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M23.7072 22.2929L7.70718 6.29294L6.29297 7.70715L22.2929 23.7071L23.7072 22.2929Z"
+    fill="currentColor"
+  />
+</svg>

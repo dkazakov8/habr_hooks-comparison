@@ -8,7 +8,6 @@ import { ESLint } from 'eslint';
 import { env } from '../../env';
 import { paths } from '../../paths';
 import eslintConfig from '../../eslint.config';
-import { Compiler } from '../../lib/ts-interface-builder';
 
 const eslint = new ESLint({
   fix: true,
@@ -18,7 +17,6 @@ const eslint = new ESLint({
 
 const logsPrefix = chalk.blue(`[WEBPACK]`);
 
-const modelsPath = path.resolve(paths.sourcePath, 'models');
 const pathsForExportFiles = [
   {
     folderPath: path.resolve(paths.sourcePath, 'const'),
@@ -33,21 +31,16 @@ const pathsForExportFiles = [
     exportDefault: false,
   },
   {
-    folderPath: path.resolve(paths.sourcePath, 'api'),
-    exportDefault: false,
-  },
-  {
     folderPath: path.resolve(paths.sourcePath, 'models'),
     exportDefault: false,
   },
   {
-    folderPath: path.resolve(paths.validatorsPath, 'api'),
-    exportDefault: true,
+    folderPath: path.resolve(paths.sourcePath, 'hooks'),
+    exportDefault: false,
   },
-];
-const pathsForValidationFiles = [
   {
-    folderPath: path.resolve(paths.sourcePath, 'api'),
+    folderPath: path.resolve(paths.sourcePath, 'helpers'),
+    exportDefault: false,
   },
 ];
 const pathsForAssetsExportFiles = [
@@ -165,46 +158,6 @@ class GenerateFiles {
     ).then(filesSavedMarks => filesSavedMarks.some(Boolean));
   }
 
-  generateValidationFiles({ changedFiles }: TypeProcessParams) {
-    const config =
-      changedFiles == null
-        ? pathsForValidationFiles
-        : pathsForValidationFiles.filter(({ folderPath }) =>
-            changedFiles.some(
-              filePath => filePath.includes(folderPath) || filePath.includes(modelsPath)
-            )
-          );
-
-    if (config.length === 0) return false;
-
-    return Promise.all(
-      config.map(({ folderPath }) => {
-        const { base: folderName } = path.parse(folderPath);
-
-        const generatedFileName = `_${folderName}.ts`;
-        const generatedFolderPath = path.resolve(paths.validatorsPath, folderName);
-
-        if (!fs.existsSync(generatedFolderPath)) fs.mkdirSync(generatedFolderPath);
-
-        return Promise.resolve()
-          .then(() => fs.promises.readdir(folderPath))
-          .then(filesNames => this._excludeFileNames(filesNames, [generatedFileName]))
-          .then(filesNames => filesNames.map(fileName => path.resolve(folderPath, fileName)))
-          .then(filesPaths =>
-            Promise.all(
-              Compiler.compile(filesPaths, { inlineImports: true }).map(({ filePath, content }) => {
-                const { base: fileName } = path.parse(filePath);
-
-                const generatedFilePath = path.resolve(generatedFolderPath, fileName);
-
-                return this._saveFile({ filePath: generatedFilePath, content });
-              })
-            )
-          );
-      })
-    ).then(filesSavedMarks => _.flatten(filesSavedMarks).some(Boolean));
-  }
-
   generateAssetsExportFiles({ changedFiles }: TypeProcessParams) {
     const config =
       changedFiles == null
@@ -253,9 +206,6 @@ class GenerateFiles {
 
     // Order matters
     return Promise.resolve()
-      .then(() => this.generateValidationFiles({ changedFiles }))
-      .then(changedMark => changedMark && (filesChanged = true))
-
       .then(() => this.generateExportFiles({ changedFiles }))
       .then(changedMark => changedMark && (filesChanged = true))
 

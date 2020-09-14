@@ -1,3 +1,3 @@
 // This file is auto-generated
 
-export * from './ApiRoute';
+export * from './TypeSelect';

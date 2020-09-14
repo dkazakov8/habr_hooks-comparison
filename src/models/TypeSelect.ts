@@ -1,0 +1,20 @@
+export type TypeSelect = {
+  currentValue: string;
+  id: string;
+  value: [string, any];
+  label: string;
+  searchValue: string;
+  options: Array<[string, any]>;
+  optionsFiltered: Array<[string, any]>;
+  tabIndex: number;
+  isMulti: boolean;
+  isOpen: boolean;
+  withSearch: boolean;
+  validation: Array<any>;
+  disabled: boolean;
+  isCreatable: boolean;
+  isVisible: boolean;
+  firstRender: boolean;
+  hasValue: boolean;
+  errors: Array<{ message: string }>;
+};

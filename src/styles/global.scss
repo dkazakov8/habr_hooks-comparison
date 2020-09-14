@@ -1,6 +1,42 @@
 @import "reset.scss";
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap&subset=cyrillic,cyrillic-ext");
 
+html {
+  --b100: #cee5ef;
+  --b400: #1cdecf;
+  --b500: #1bd1c2;
+  --b600: #4fb9e7;
+  --b700: #03a5ec;
+  --b800: #039bdd;
+  --b900: #1e3352;
+  --bg100: #eceff1;
+  --black: #000000;
+  --white: #ffffff;
+  --r500: #fa6458;
+  --r500_99: #fa645899;
+  --r700: #723732;
+  --y400: #f7d10d;
+  --y500: #fdca12;
+  --g500: #24be46;
+  --g500_99: #24be4699;
+  --g700: #1d5c2b;
+  --w1: #eceff1;
+  --w1dark: #181919;
+  --w2: #ffffff;
+  --w3: #ffffff;
+  --w4: #ffffff;
+  --w5: #eceff1;
+  --w5light: #eceff1;
+  --w6: #9099a3;
+  --w7: #d7dce2;
+  --w7light: #d7dce2;
+  --w8: #000001;
+  --w8helper: #282a2a;
+  --w9: #878787;
+  --w10: #d8dde3;
+  --w11: #edf0f2;
+}
+
 body {
   font-family: "Roboto", Tahoma, sans-serif;
   font-size: 18px;

@@ -1,0 +1,216 @@
+@import "constants.scss";
+@import "layout.scss";
+@import "animations.scss";
+
+@mixin loader($color) {
+  position: relative;
+
+  &:after {
+    display: none;
+    content: "";
+    border: 2px solid $color;
+    border-right-color: transparent;
+    width: 12px;
+    height: 12px;
+    border-radius: 30px;
+    margin-left: 10px;
+    animation: rotating 1s linear infinite;
+    transform-origin: center;
+    vertical-align: top;
+    margin-top: 9px;
+  }
+
+  &.loading {
+    &:after {
+      display: inline-block;
+    }
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin inline-top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@mixin title-font {
+  font-family: "Roboto Mono", monospace;
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin button-disabled {
+  &:disabled {
+    cursor: default;
+    color: #000 !important;
+    background: $W6 !important;
+  }
+}
+
+@mixin button {
+  @include inline-top;
+  @include title-font;
+
+  color: #fff;
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+  white-space: nowrap;
+  padding: 0 20px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  border-radius: 3px;
+  font-weight: 500;
+  transition: background $trans, border-color $trans, color $trans;
+  outline: none;
+  text-align: center;
+  border: 0;
+
+  &:before {
+    right: 10px;
+    top: 10px;
+  }
+
+  @include button-disabled;
+  @include loader(#fff);
+}
+
+@mixin big-button {
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+
+  &:after {
+    width: 16px;
+    height: 16px;
+    margin-top: 17px;
+    margin-left: 15px;
+  }
+}
+
+@mixin button-blue {
+  @include button;
+
+  background: $B_500;
+
+  &:hover {
+    background: $B_400;
+  }
+}
+
+@mixin button-green {
+  @include button;
+
+  background: $G_500;
+
+  &:hover {
+    background: $G_700;
+  }
+}
+
+@mixin button-red {
+  @include button;
+
+  background: $R_500;
+
+  &:hover {
+    background: $R_700;
+  }
+}
+
+@mixin button-dark-blue {
+  @include button;
+
+  background: $B_800;
+
+  &:hover {
+    background: $B_700;
+  }
+}
+
+@mixin button-yellow {
+  @include button;
+
+  background: $Y_500;
+  color: #181919 !important;
+
+  &:hover {
+    background: $Y_400;
+  }
+}
+
+@mixin button-grey {
+  @include button;
+
+  color: $W8;
+  background: $W1;
+
+  &:hover {
+    background: $W7;
+  }
+}
+
+@mixin button-dark-blue-transparent {
+  @include button;
+
+  color: $B_800;
+  border: 1px solid $B_800;
+  line-height: 27px;
+
+  &:hover {
+    color: $B_700;
+    border-color: $B_700;
+  }
+
+  &:after {
+    border-color: $B_700;
+    border-right-color: transparent;
+  }
+}
+
+@mixin button-default-transparent {
+  @include button;
+
+  color: $W8;
+  border: 1px solid $W10;
+  line-height: 27px;
+
+  &:hover {
+    border-color: $W8;
+  }
+
+  &:after {
+    border-color: $W8;
+    border-right-color: transparent;
+  }
+}
+
+@mixin button-red-transparent {
+  @include button;
+
+  color: $R_500;
+  border: 1px solid $R_500;
+  line-height: 27px;
+
+  &:hover {
+    color: $R_500;
+    border-color: $R_500;
+  }
+
+  &:after {
+    border-color: $R_500;
+    border-right-color: transparent;
+  }
+}

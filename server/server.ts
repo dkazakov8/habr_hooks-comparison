@@ -1,7 +1,10 @@
+import { isomorphPolyfills } from 'utils';
 import { createServer } from 'serverUtils';
 import { handleFileRoutes } from 'routeMiddlewares/handleFileRoutes';
 import { handlePageRoutes } from 'routeMiddlewares/handlePageRoutes';
 import { handleMissingRoutes } from 'routeMiddlewares/handleMissingRoutes';
+
+isomorphPolyfills();
 
 Promise.resolve()
   .then(() => createServer())
