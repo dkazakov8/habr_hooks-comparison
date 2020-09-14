@@ -1,0 +1,12 @@
+{
+  "name": "ts-interface-builder",
+  "version": "0.2.2",
+  "description": "Compile TypeScript interfaces into a description that allows runtime validation",
+  "main": "interfaceBuilder.ts",
+  "typings": "interfaceBuilder.ts",
+  "bin": {
+    "ts-interface-builder": "bin/ts-interface-builder"
+  },
+  "author": "Dmitry S, Grist Labs",
+  "license": "Apache-2.0"
+}

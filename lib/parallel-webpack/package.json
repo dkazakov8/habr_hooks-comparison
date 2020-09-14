@@ -1,0 +1,8 @@
+{
+  "name": "parallel-webpack",
+  "version": "2.6.0",
+  "description": "Builds multiple webpack configurations in parallel and allows you to easily create variants to those configurations.",
+  "main": "index.ts",
+  "author": "Patrick Gotthardt <patrick.gotthardt@trivago.com>",
+  "license": "BSD-3-Clause"
+}
